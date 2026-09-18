@@ -1,4 +1,4 @@
-// repository — 테마 전환 · 검색 · 코드 복사 · 사진 확대 · 목차 강조
+// memory bank — 테마 전환 · 검색 · 코드 복사 · 사진 확대 · 목차 강조
 // 의존성 없음.
 (() => {
   const root = document.documentElement;

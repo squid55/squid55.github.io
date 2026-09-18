@@ -1,5 +1,5 @@
 baseURL = "https://squid55.github.io/"
-title = "repository"
+title = "memory bank"
 locale = "ko-KR"
 defaultContentLanguage = "ko"
 hasCJKLanguage = true          # 한글 글자 수 · 읽기 시간 계산을 CJK 기준으로
@@ -10,7 +10,7 @@ timeZone = "Asia/Seoul"
 capitalizeListTitles = false   # 태그를 적은 그대로 (linux-media → Linux-Media 로 바꾸지 않게)
 
 [params]
-  description = "repository"
+  description = "memory bank"
   author = "squid55"
   github = "https://github.com/squid55"
   repo = "https://github.com/squid55/squid55.github.io"

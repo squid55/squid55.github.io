@@ -1,3 +1,3 @@
 ---
-title: "repository"
+title: "memory bank"
 ---

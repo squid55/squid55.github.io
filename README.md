@@ -1,4 +1,4 @@
-# repository
+# memory bank
 
 Hugo 로 만들고 GitHub Pages 로 올리는 개인 블로그. <https://squid55.github.io/>
 
