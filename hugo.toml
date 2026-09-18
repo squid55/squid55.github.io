@@ -16,7 +16,7 @@ capitalizeListTitles = false   # 태그를 적은 그대로 (linux-media → Lin
   repo = "https://github.com/squid55/squid55.github.io"
   # 따로 운영하는 위키형 노트. 이 블로그가 본체이고, 위키는 그 아래 딸린 항목별 노트다.
   [[params.related]]
-    name = "IP카메라 기술 노트"
+    name = "IP카메라"
     url = "https://squid55.github.io/ipcam-notes/"
 
 # 대문 목록에 보여줄 글 수
