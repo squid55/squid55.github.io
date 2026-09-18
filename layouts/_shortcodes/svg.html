@@ -1,0 +1,11 @@
+{{/*
+  SVG 를 <img> 가 아니라 본문에 직접 심는다 — CSS 변수(--dg-*)를 받아 다크 모드를 따라가게.
+    {{< svg src="pipeline.svg" caption="…" wide=true >}}
+  ipcam-notes 의 docs/fig/*.svg 를 그대로 옮겨 쓸 수 있다.
+*/}}
+{{ $r := .Page.Resources.Get (.Get "src") | default (resources.Get (.Get "src")) }}
+{{ if not $r }}{{ errorf "svg: %q 를 찾지 못했다 (%s)" (.Get "src") .Page.File.Path }}{{ end }}
+<figure class="diagram{{ if .Get "wide" }} wide{{ end }}">
+  {{ $r.Content | replaceRE `<\?xml[^>]*\?>` "" | safeHTML }}
+  {{ with .Get "caption" }}<figcaption>{{ . | markdownify }}</figcaption>{{ end }}
+</figure>

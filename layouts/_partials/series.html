@@ -1,0 +1,11 @@
+{{/* 같은 series 에 속한 글 목록. front matter: series = ["V4L2 파헤치기"] */}}
+{{ with .GetTerms "series" }}{{ range . }}
+<aside class="box series">
+  <p class="box-title">연재 — <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></p>
+  <ol>
+    {{ range .Pages.ByDate }}
+      <li>{{ if eq . $ }}<strong>{{ .LinkTitle }}</strong>{{ else }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}</li>
+    {{ end }}
+  </ol>
+</aside>
+{{ end }}{{ end }}

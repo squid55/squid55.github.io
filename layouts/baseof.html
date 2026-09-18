@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="{{ site.Language.Locale }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
+  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ if .IsPage }}{{ .Summary | plainify | truncate 150 }}{{ else }}{{ site.Params.description }}{{ end }}{{ end }}">
+  <link rel="canonical" href="{{ .Permalink }}">
+  {{ with .OutputFormats.Get "rss" }}<link rel="alternate" type="application/rss+xml" href="{{ .Permalink }}" title="{{ site.Title }}">{{ end }}
+  {{ partial "opengraph.html" . }}
+  <script>
+    /* 테마를 첫 페인트 전에 적용해 깜빡임을 막는다 */
+    try { var t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+  {{ $css := slice (resources.Get "css/main.css") (resources.Get "css/syntax.css") | resources.Concat "css/site.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%23111'/><rect x='24' y='64' width='52' height='10' fill='%23fff'/></svg>">
+</head>
+<body>
+  {{ partial "header.html" . }}
+  <main class="wrap{{ if and .IsPage .Params.toc }} wide{{ end }}">
+    {{ block "main" . }}{{ end }}
+  </main>
+  {{ partial "footer.html" . }}
+  {{ $js := resources.Get "js/site.js" | minify | fingerprint }}
+  <script src="{{ $js.RelPermalink }}" defer></script>
+  {{ if .Store.Get "hasMermaid" }}
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    const dark = document.documentElement.dataset.theme === "dark" ||
+      (!document.documentElement.dataset.theme && matchMedia("(prefers-color-scheme: dark)").matches);
+    mermaid.initialize({
+      startOnLoad: true, theme: "base",
+      themeVariables: dark
+        ? { primaryColor: "#1b1b1b", primaryTextColor: "#e8e8e8", primaryBorderColor: "#737373", lineColor: "#a3a3a3", textColor: "#e8e8e8", actorBkg: "#1b1b1b", actorBorder: "#737373", noteBkgColor: "#242424", noteBorderColor: "#737373" }
+        : { primaryColor: "#f6f6f6", primaryTextColor: "#111111", primaryBorderColor: "#8a8a8a", lineColor: "#555555", textColor: "#111111", actorBkg: "#f6f6f6", actorBorder: "#8a8a8a", noteBkgColor: "#eeeeee", noteBorderColor: "#8a8a8a" },
+    });
+  </script>
+  {{ end }}
+</body>
+</html>

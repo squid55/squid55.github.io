@@ -1,0 +1,14 @@
+<footer class="site-footer">
+  <div class="wrap{{ if and .IsPage .Params.toc }} wide{{ end }}">
+    <p>
+      © {{ now.Year }} {{ site.Params.author }}
+      · <a href="{{ site.Params.github }}">GitHub</a>
+    </p>
+    {{ if and .IsPage .File }}
+      <p class="muted">
+        <a href="{{ site.Params.repo }}/blob/main/content/{{ .File.Path }}">이 글의 원본</a>
+        {{ with .GitInfo }} · 최종 커밋 <code>{{ .AbbreviatedHash }}</code>{{ end }}
+      </p>
+    {{ end }}
+  </div>
+</footer>

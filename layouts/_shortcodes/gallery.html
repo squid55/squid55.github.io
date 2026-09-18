@@ -1,0 +1,25 @@
+{{/*
+  페이지 번들 안 사진을 격자로 보여준다. 누르면 원본 크기(최대 2000px)로 열린다.
+    {{< gallery >}}                        번들의 모든 이미지
+    {{< gallery match="photos/day1-*" >}}   글롭으로 일부만
+  캡션은 front matter 의 resources 에서 title 로 준다 (archetypes/conference 참고).
+*/}}
+{{ $match := .Get "match" | default "**.{jpg,jpeg,png,webp,JPG,JPEG,PNG}" }}
+{{ $imgs := where (.Page.Resources.Match $match) "ResourceType" "image" }}
+{{ if not $imgs }}{{ warnf "gallery: %s 에서 %q 에 맞는 사진이 없다" .Page.File.Path $match }}{{ end }}
+<div class="gallery">
+  {{ range $imgs }}
+    {{ $img := . }}
+    {{ $img = $img.Filter images.AutoOrient }}
+    {{ $thumb := $img.Fill "480x360 Smart" }}
+    {{/* 원본을 그대로 링크하지 않는다 — 다시 인코딩해야 EXIF(GPS 포함)가 빠진다 */}}
+    {{ $full := $img.Resize (printf "%dx" (cond (gt $img.Width 2000) 2000 $img.Width)) }}
+    {{ $cap := .Title }}{{ if eq $cap .Name }}{{ $cap = "" }}{{ end }}
+    <figure>
+      <a href="{{ $full.RelPermalink }}" data-lightbox>
+        <img src="{{ $thumb.RelPermalink }}" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}" alt="{{ $cap }}" loading="lazy">
+      </a>
+      {{ with $cap }}<figcaption>{{ . }}</figcaption>{{ end }}
+    </figure>
+  {{ end }}
+</div>

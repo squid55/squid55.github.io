@@ -1,0 +1,36 @@
+/* 코드 강조 — 무채색.
+   색 대신 굵기(키워드 · 타입) · 기울임(주석) · 회색 농도(문자열 · 숫자 · 전처리기)로 구분한다.
+   Chroma 클래스 이름: https://github.com/alecthomas/chroma/blob/master/types.go */
+
+.chroma { color: var(--text); }
+.chroma .line { display: flex; }
+.chroma .hl { background: var(--mark); }
+.chroma .ln, .chroma .lnt { color: var(--text-3); margin-right: .8em; user-select: none; }
+
+/* 주석 */
+.chroma :is(.c, .c1, .cm, .cs, .ch) { color: var(--text-3); font-style: italic; }
+/* 전처리기 (#include, #define) */
+.chroma :is(.cp, .cpf) { color: var(--text-2); }
+
+/* 키워드 · 타입 */
+.chroma :is(.k, .kc, .kd, .kn, .kp, .kr) { font-weight: 700; }
+.chroma .kt { font-weight: 600; }
+
+/* 이름 */
+.chroma :is(.nf, .fm) { font-weight: 600; }
+.chroma :is(.nb, .bp) { color: var(--text); }
+.chroma :is(.nc, .nn) { font-weight: 600; }
+.chroma :is(.nl, .nd) { color: var(--text-2); }
+
+/* 리터럴 */
+.chroma :is(.s, .s1, .s2, .sa, .sb, .sc, .dl, .sd, .se, .sh, .si, .sx, .sr, .ss) { color: var(--text-2); }
+.chroma :is(.m, .mb, .mf, .mh, .mi, .il, .mo) { color: var(--text-2); }
+
+/* diff */
+.chroma .gd { color: var(--text-3); text-decoration: line-through; }
+.chroma .gi { font-weight: 700; }
+.chroma .gh, .chroma .gu { font-weight: 700; }
+
+/* 셸 프롬프트 · 오류 */
+.chroma .gp { color: var(--text-3); user-select: none; }
+.chroma .err { text-decoration: underline wavy var(--text-3); }

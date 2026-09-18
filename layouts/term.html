@@ -1,0 +1,5 @@
+{{ define "main" }}
+{{ partial "breadcrumbs.html" . }}
+<header class="page-head"><h1>#{{ .Title }}</h1></header>
+<ul class="list">{{ range .Pages.ByDate.Reverse }}{{ partial "item.html" (dict "page" . "where" true) }}{{ end }}</ul>
+{{ end }}

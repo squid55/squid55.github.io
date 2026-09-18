@@ -1,0 +1,59 @@
+baseURL = "https://squid55.github.io/"
+title = "repository"
+locale = "ko-KR"
+defaultContentLanguage = "ko"
+hasCJKLanguage = true          # 한글 글자 수 · 읽기 시간 계산을 CJK 기준으로
+enableGitInfo = true           # 최종 수정일을 git log 에서 읽는다 (CI 는 fetch-depth: 0 필요)
+enableRobotsTXT = true
+summaryLength = 60
+timeZone = "Asia/Seoul"
+capitalizeListTitles = false   # 태그를 적은 그대로 (linux-media → Linux-Media 로 바꾸지 않게)
+
+[params]
+  description = "repository"
+  author = "squid55"
+  github = "https://github.com/squid55"
+  repo = "https://github.com/squid55/squid55.github.io"
+
+# 대문 목록에 보여줄 글 수
+[params.home]
+  recent = 20
+
+[taxonomies]
+  tag = "tags"
+  series = "series"
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]   # JSON = 검색 색인 (layouts/home.json)
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true                  # 본문에 <details> 같은 HTML 을 쓸 수 있게
+  [markup.goldmark.parser.attribute]
+    block = true
+  [markup.highlight]
+    noClasses = false              # 색은 assets/css/syntax.css 가 테마별로 준다
+    lineNumbersInTable = false
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+
+[imaging]
+  resampleFilter = "Lanczos"
+  [imaging.jpeg]
+    quality = 82
+  [imaging.exif]
+    disableLatLong = true          # 사진 EXIF 의 위치 정보는 읽지 않는다
+
+[frontmatter]
+  # front matter 에 lastmod 가 있으면 그것, 없으면 git 커밋 날짜
+  lastmod = ["lastmod", ":git", ":default"]
+
+[caches.images]
+  dir = ":cacheDir/images"
+
+# 번들 안 파일(사진 원본 · PDF)은 템플릿이 실제로 쓸 때만 내보낸다.
+# 사진 원본에는 GPS 같은 EXIF 가 남아 있으므로, 다시 인코딩한 것만 나가게 하려는 것이다.
+[[cascade]]
+  [cascade.build]
+    publishResources = false

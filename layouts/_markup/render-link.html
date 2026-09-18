@@ -1,0 +1,19 @@
+{{- /*
+  [글](../ebpf/maps.md) 처럼 .md 파일로 건 링크를 실제 주소로 바꾼다.
+  ipcam-notes 처럼 GitHub 에서도, 사이트에서도 같은 링크가 동작하게 하려는 것이다.
+  대상이 없으면 빌드 경고를 낸다 (hugo --panicOnWarning 이면 실패).
+*/ -}}
+{{- $u := urls.Parse .Destination -}}
+{{- $href := .Destination -}}
+{{- if and (not $u.IsAbs) $u.Path (not (hasPrefix $u.Path "mailto:")) -}}
+  {{- with or (.Page.GetPage $u.Path) (.Page.GetPage (strings.TrimSuffix "/index.md" $u.Path)) -}}
+    {{- $href = .RelPermalink -}}{{- with $u.Fragment -}}{{- $href = printf "%s#%s" $href . -}}{{- end -}}
+  {{- else -}}
+    {{- with $.Page.Resources.Get $u.Path -}}
+      {{- $href = .RelPermalink -}}
+    {{- else -}}
+      {{- if strings.HasSuffix $u.Path ".md" -}}{{- warnf "깨진 링크: %s → %s" $.Page.File.Path $.Destination -}}{{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+<a href="{{ $href | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if $u.IsAbs }} rel="noopener"{{ end }}>{{ .Text }}</a>

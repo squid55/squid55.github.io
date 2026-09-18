@@ -1,0 +1,32 @@
+{{ define "main" }}
+{{ partial "breadcrumbs.html" . }}
+<div class="article-grid{{ if not (and .Params.toc (ge (len .Fragments.Headings) 1)) }} no-toc{{ end }}">
+  <article class="article">
+    <header class="page-head">
+      <h1>{{ .Title }}</h1>
+      {{ with .Description }}<p class="lead">{{ . }}</p>{{ end }}
+      {{ partial "meta.html" . }}
+    </header>
+    {{ partial "series.html" . }}
+    <div class="prose">
+      {{ .Content }}
+    </div>
+    {{ with .Params.pdf }}{{ partial "pdf.html" (dict "page" $ "src" . "title" (printf "%s (PDF)" $.Title)) }}{{ end }}
+    {{ $pages := .CurrentSection.RegularPages }}
+    {{ if eq .CurrentSection.Params.order "weight" }}{{ $pages = $pages.ByWeight }}{{ else }}{{ $pages = $pages.ByDate }}{{ end }}
+    {{ $prev := $pages.Prev . }}{{ $next := $pages.Next . }}
+    {{ if or $prev $next }}
+    <nav class="pager" aria-label="같은 분류의 이전·다음 글">
+      {{ with $prev }}<a class="prev" href="{{ .RelPermalink }}"><span>이전</span>{{ .LinkTitle }}</a>{{ end }}
+      {{ with $next }}<a class="next" href="{{ .RelPermalink }}"><span>다음</span>{{ .LinkTitle }}</a>{{ end }}
+    </nav>
+    {{ end }}
+  </article>
+  {{ if and .Params.toc (ge (len .Fragments.Headings) 1) }}
+    <aside class="toc" aria-label="목차">
+      <p class="box-title">목차</p>
+      {{ .TableOfContents }}
+    </aside>
+  {{ end }}
+</div>
+{{ end }}

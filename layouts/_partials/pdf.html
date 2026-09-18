@@ -1,0 +1,22 @@
+{{/*
+  PDF 임베드. 인자: page(현재 페이지), src(번들 안 파일명 또는 /static 경로 또는 URL), title, height
+  모바일 브라우저는 <object> 로 PDF 를 못 그리는 경우가 많아 다운로드 링크를 항상 같이 둔다.
+*/}}
+{{ $p := .page }}
+{{ $url := .src }}
+{{ $size := "" }}
+{{ with $p.Resources.Get .src }}{{ $url = .RelPermalink }}{{ with .Content }}{{ $size = len . }}{{ end }}{{ end }}
+{{ if and (not (hasPrefix $url "/")) (not (hasPrefix $url "http")) }}
+  {{ errorf "pdf: %q 를 찾지 못했다 (%s). 페이지 번들 안에 넣었는지 확인" .src $p.File.Path }}
+{{ end }}
+{{ $title := .title | default (path.Base .src) }}
+<figure class="pdf">
+  <object data="{{ $url }}#view=FitH" type="application/pdf" style="height: {{ .height | default "80vh" }}" aria-label="{{ $title }}">
+    <p class="muted">이 브라우저는 PDF 를 바로 보여주지 않는다. 아래 링크로 연다.</p>
+  </object>
+  <figcaption>
+    <a href="{{ $url }}">{{ $title }}</a>
+    {{ with $size }}<span class="muted">({{ lang.FormatNumber 1 (div (float .) 1048576) }} MB)</span>{{ end }}
+    · <a href="{{ $url }}" download>내려받기</a>
+  </figcaption>
+</figure>

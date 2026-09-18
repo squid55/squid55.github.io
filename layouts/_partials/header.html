@@ -1,0 +1,16 @@
+<header class="site-header">
+  <div class="wrap header-row{{ if and .IsPage .Params.toc }} wide{{ end }}">
+    <a class="brand" href="{{ "/" | relURL }}">{{ site.Title }}</a>
+    <div class="tools">
+      <button class="icon-btn" id="search-open" type="button" aria-label="검색 (/)">검색 <kbd>/</kbd></button>
+      <button class="icon-btn" id="theme-toggle" type="button" aria-label="밝게/어둡게 전환">테마</button>
+    </div>
+  </div>
+  <dialog id="search" aria-label="검색">
+    <form method="dialog" class="search-box">
+      <input id="search-input" type="search" placeholder="제목 · 태그 · 본문 검색" autocomplete="off">
+      <button type="submit" class="icon-btn" aria-label="닫기">Esc</button>
+    </form>
+    <ol id="search-results" class="search-results"></ol>
+  </dialog>
+</header>

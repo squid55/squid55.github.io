@@ -1,0 +1,23 @@
+{{/*
+  목록 한 줄: 날짜 | 제목 — 요약.
+  인자: page, date(보여줄 날짜, 기본 작성일), where(분류 표시 여부)
+  사진이 있는 글(cover)은 흑백 썸네일을 붙이고, 가리키면 색이 돌아온다.
+*/}}
+{{ $p := .page }}
+{{ $date := .date | default $p.Date }}
+<li class="item">
+  <time datetime="{{ $date.Format "2006-01-02" }}">{{ $date.Format "2006.01.02" }}</time>
+  <div>
+    <a class="item-title" href="{{ $p.RelPermalink }}">{{ $p.LinkTitle }}</a>
+    {{ if or $p.Description .where }}
+      <p class="item-sub">
+        {{ if .where }}{{ with site.GetPage (printf "/%s" $p.Section) }}<span class="where">{{ .LinkTitle }}</span>{{ end }}{{ if $p.Description }} — {{ end }}{{ end }}
+        {{- $p.Description -}}
+      </p>
+    {{ end }}
+  </div>
+  {{ with $p.Params.cover }}{{ with $p.Resources.Get . }}{{ if ne .MediaType.SubType "svg" }}
+    {{ $t := .Fill "320x214 Smart" }}
+    <a class="thumb" href="{{ $p.RelPermalink }}" tabindex="-1"><img src="{{ $t.RelPermalink }}" width="160" height="107" alt="" loading="lazy"></a>
+  {{ end }}{{ end }}{{ end }}
+</li>

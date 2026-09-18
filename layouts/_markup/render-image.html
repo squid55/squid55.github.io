@@ -1,0 +1,31 @@
+{{- /*
+  본문의 ![설명](사진.jpg "캡션") 을 처리한다.
+  - 페이지 번들 안 사진이면 폭 1400px 이하로 다시 인코딩하고 width/height 를 넣어 레이아웃 흔들림을 막는다
+  - "캡션" 이 있으면 figure + figcaption 으로 감싼다
+*/ -}}
+{{- $u := urls.Parse .Destination -}}
+{{- $src := .Destination -}}
+{{- $w := 0 -}}{{- $h := 0 -}}{{- $full := "" -}}
+{{- if not $u.IsAbs -}}
+  {{- with .Page.Resources.Get $u.Path -}}
+    {{- if and (eq .ResourceType "image") (ne .MediaType.SubType "svg") (ne .MediaType.SubType "gif") -}}
+      {{- /* 원본은 내보내지 않는다. 다시 인코딩해야 EXIF(GPS 포함)가 빠진다 */ -}}
+      {{- $img := . -}}
+      {{- $img = $img.Filter images.AutoOrient -}}
+      {{- $full = ($img.Resize (printf "%dx" (cond (gt $img.Width 2000) 2000 $img.Width))).RelPermalink -}}
+      {{- $img = $img.Resize (printf "%dx" (cond (gt $img.Width 1400) 1400 $img.Width)) -}}
+      {{- $src = $img.RelPermalink -}}{{- $w = $img.Width -}}{{- $h = $img.Height -}}
+    {{- else -}}
+      {{- $src = .RelPermalink -}}
+    {{- end -}}
+  {{- else -}}
+    {{- with resources.Get $u.Path -}}{{- $src = .RelPermalink -}}{{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- $img := printf `<img src="%s" alt="%s"%s loading="lazy" decoding="async">` $src .PlainText (cond (gt $w 0) (printf ` width="%d" height="%d"` $w $h) "") -}}
+{{- if $full -}}{{- $img = printf `<a href="%s" data-lightbox>%s</a>` $full $img -}}{{- end -}}
+{{- if .Title -}}
+  <figure>{{- $img | safeHTML -}}<figcaption>{{- .Title | markdownify -}}</figcaption></figure>
+{{- else -}}
+  {{- $img | safeHTML -}}
+{{- end -}}

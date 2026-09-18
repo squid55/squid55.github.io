@@ -1,0 +1,13 @@
+{{- /* 검색 색인. assets/js/site.js 가 처음 검색할 때 한 번 받아간다. */ -}}
+{{- $idx := slice -}}
+{{- range site.RegularPages -}}
+  {{- $section := "" -}}{{- with site.GetPage (printf "/%s" .Section) -}}{{- $section = .LinkTitle -}}{{- end -}}
+  {{- $idx = $idx | append (dict
+      "t" .Title
+      "u" .RelPermalink
+      "s" $section
+      "d" (.Date.Format "2006-01-02")
+      "g" (.Params.tags | default slice)
+      "c" (.Plain | truncate 3000 "")) -}}
+{{- end -}}
+{{- $idx | jsonify -}}

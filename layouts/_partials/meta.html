@@ -1,0 +1,12 @@
+{{/* 작성 · 수정일과 git 이력 링크. 수정일은 git 커밋 기준(enableGitInfo) */}}
+<p class="meta">
+  {{- if not .Date.IsZero }}작성 <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>{{ end }}
+  {{- if and (not .Lastmod.IsZero) (ne (.Lastmod.Format "20060102") (.Date.Format "20060102")) }} · 수정 <time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "2006.01.02" }}</time>{{ end }}
+  {{- with .File }} · <a href="{{ site.Params.repo }}/commits/main/content/{{ .Path }}">이력</a>{{ end }}
+  {{- with .Params.event }} · {{ .name }}{{ with .place }}, {{ . }}{{ end }}{{ end }}
+  {{- with .Params.kernel }} · 커널 {{ . }}{{ end }}
+  {{- with .Params.target }} · 대상 {{ . }}{{ end }}
+</p>
+{{ with .GetTerms "tags" }}
+<p class="tags">{{ range . }}<a href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a>{{ end }}</p>
+{{ end }}

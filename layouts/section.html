@@ -1,0 +1,27 @@
+{{ define "main" }}
+
+{{ partial "breadcrumbs.html" . }}
+<header class="page-head">
+  <h1>{{ .Title }}</h1>
+  {{ with .Description }}<p class="lead">{{ . }}</p>{{ end }}
+</header>
+{{ with .Content }}<div class="prose">{{ . }}</div>{{ end }}
+
+{{/* 하위 주제(예: 커널 › V4L2 · eBPF · 내부 구조)는 위키 목차처럼 */}}
+{{ range .Sections.ByWeight }}
+  <h2 class="section-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+  <ul class="list">
+    {{ range .RegularPagesRecursive.ByWeight }}
+      {{ partial "item.html" (dict "page" .) }}
+    {{ end }}
+  </ul>
+{{ end }}
+
+{{ with .RegularPages }}
+  {{ if $.Sections }}<h2 class="section-title">그 밖의 글</h2>{{ end }}
+  {{ $pages := . }}
+  {{ if eq $.Params.order "weight" }}{{ $pages = $pages.ByWeight }}{{ else }}{{ $pages = $pages.ByDate.Reverse }}{{ end }}
+  <ul class="list">{{ range $pages }}{{ partial "item.html" (dict "page" .) }}{{ end }}</ul>
+{{ end }}
+
+{{ end }}

@@ -1,0 +1,12 @@
+{{/*
+  강조 상자. ipcam-notes 의 「실측」 표기를 그대로 가져왔다.
+    {{< note measured >}}직접 확인한 것{{< /note >}}
+    {{< note warn >}}함정{{< /note >}}
+    {{< note >}}일반 참고{{< /note >}}
+*/}}
+{{ $kind := .Get 0 | default "info" }}
+{{ $label := index (dict "measured" "실측" "warn" "주의" "info" "참고" "todo" "확인하지 못했다") $kind | default $kind }}
+<aside class="callout {{ $kind }}">
+  <p class="callout-label">{{ $label }}</p>
+  {{ .Inner | .Page.RenderString (dict "display" "block") }}
+</aside>
