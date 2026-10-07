@@ -10,6 +10,8 @@ pdf: "xv6-book-20260923.pdf"
 MIT 6.1810 (Fall 2026) 교재의 2026년 9월 23일판이다. xv6 실험 문서의 쪽 번호 링크는 이 파일을 가리킨다.
 원본은 <https://mit-pdos.github.io/xv6-riscv-book/> 에 있고 계속 갱신되므로, 쪽 번호가 바뀌지 않게 이 판을 따로 둔다.
 
+xv6 소스는 <https://github.com/mit-pdos/xv6-riscv> 에 있다. 실험 문서는 커밋 06aad25 (<https://github.com/mit-pdos/xv6-riscv/tree/06aad25c735fd3159bdfae5680be4eab7b1668b2>) 를 기준으로 했다.
+
 출처: <https://github.com/mit-pdos/xv6-riscv-book>. 아래는 원본 저장소의 LICENSE 전문이다.
 
 ```text
