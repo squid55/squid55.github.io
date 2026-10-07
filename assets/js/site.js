@@ -134,4 +134,15 @@
     }, { rootMargin: "0px 0px -70% 0px" });
     document.querySelectorAll(".prose h2[id], .prose h3[id]").forEach((h) => io.observe(h));
   }
+
+  // ── PDF 전체 화면 ───────────────────────────────────────────────
+  // 글 안의 PDF 뷰어(<object>)를 화면 전체로 키운다. 안 되는 브라우저는 링크대로 새 탭에 연다.
+  document.querySelectorAll("a.pdf-full").forEach((a) => {
+    a.addEventListener("click", (e) => {
+      const obj = a.closest("figure.pdf")?.querySelector("object");
+      if (!obj?.requestFullscreen) { a.target = "_blank"; return; }
+      e.preventDefault();
+      obj.requestFullscreen().catch(() => window.open(a.href, "_blank"));
+    });
+  });
 })();

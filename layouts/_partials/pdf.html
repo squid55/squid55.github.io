@@ -18,5 +18,6 @@
     <a href="{{ $url }}">{{ $title }}</a>
     {{ with $size }}<span class="muted">({{ lang.FormatNumber 1 (div (float .) 1048576) }} MB)</span>{{ end }}
     · <a href="{{ $url }}" download>내려받기</a>
+    · <a href="{{ $url }}" class="pdf-full">전체 화면</a>
   </figcaption>
 </figure>

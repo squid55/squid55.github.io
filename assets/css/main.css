@@ -217,6 +217,7 @@ main.wrap { padding-top: 2.5rem; }
 .pdf { margin: 2rem 0; }
 .pdf object { width: 100%; border: 1px solid var(--line); background: var(--bg-soft); display: block; }
 @media (max-width: 40rem) { .pdf object { height: 60vh !important; } }
+.pdf object:fullscreen { width: 100vw; height: 100vh !important; border: 0; }
 
 /* 이전 · 다음 */
 .pager { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 4rem; padding-top: 1.25rem; border-top: 1px solid var(--line); font-size: .9rem; }
