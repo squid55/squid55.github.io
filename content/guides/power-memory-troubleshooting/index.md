@@ -1,7 +1,7 @@
 ---
 title: "Power & Memory Troubleshooting: From Device Physics to Field Debugging"
 description: "전원·메모리 트러블슈팅 이론: MOSFET, MLCC, 벅 컨버터, 커패시터 소손, 아날로그-디지털 경계, DRAM까지 소자 특성에서 현장 디버깅으로"
-date: 2026-10-26T23:00:00+09:00
+date: 2026-10-26T22:40:00+09:00
 tags: ["pmic", "전원", "dram", "mlcc", "트러블슈팅"]
 pdf: "power-memory-troubleshooting-20261026.pdf"
 ---
