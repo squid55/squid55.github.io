@@ -70,6 +70,9 @@ kbd { border: 1px solid var(--line-2); border-radius: 3px; padding: 0 .3em; font
 .header-row { display: flex; align-items: baseline; gap: .5rem 1.25rem; padding-block: 1.1rem; flex-wrap: wrap; }
 .brand { font-weight: 700; text-decoration: none; letter-spacing: -.01em; flex: 1; }
 .tools { display: flex; gap: .25rem; }
+.related { display: flex; gap: .75rem; padding-right: .5rem; border-right: 1px solid var(--line); }
+.related a { color: var(--text-2); font-size: .85rem; text-decoration: none; padding: .1rem .35rem; }
+.related a:hover { color: var(--text); }
 .icon-btn {
   background: none; color: var(--text-2); border: 0; padding: .1rem .35rem;
   font: inherit; font-size: .85rem; cursor: pointer;

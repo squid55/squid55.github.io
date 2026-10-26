@@ -1,6 +1,11 @@
 <header class="site-header">
   <div class="wrap header-row{{ if and .IsPage .Params.toc }} wide{{ end }}">
     <a class="brand" href="{{ "/" | relURL }}">{{ site.Title }}</a>
+    {{- with site.Params.related }}
+    <nav class="related" aria-label="관련 사이트">
+      {{- range . }}<a href="{{ .url }}">{{ .name }}</a>{{ end }}
+    </nav>
+    {{- end }}
     <div class="tools">
       <button class="icon-btn" id="search-open" type="button" aria-label="검색 (/)">검색 <kbd>/</kbd></button>
       <button class="icon-btn" id="theme-toggle" type="button" aria-label="밝게/어둡게 전환">테마</button>
