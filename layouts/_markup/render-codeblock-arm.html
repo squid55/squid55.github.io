@@ -1,0 +1,30 @@
+{{- /*
+  ARM 어셈블리 · objdump 출력 강조. Chroma 의 ArmAsm 렉서는 대괄호와 콜론 없는 레이블을 오류로 칠해서 직접 나눈다.
+    ```arm
+  줄마다 주석(@ ;)을 떼고, 맨 앞의 주소·레이블과 명령어, 나머지 피연산자를 토큰으로 나눠 Chroma 클래스를 붙인다.
+  {{ . }} 가 HTML 이스케이프를 하므로 원문 그대로 다룬다.
+*/ -}}
+{{- $tok := `<[^>]*>|#-?0x[0-9a-fA-F]+|#-?[0-9]+|=0x[0-9a-fA-F]+|0x[0-9a-fA-F]+|[A-Za-z_][A-Za-z0-9_]*|[0-9]+|[^A-Za-z0-9_#=<]+|.` -}}
+{{- $regs := `^(r[0-9]|r1[0-5]|sp|lr|pc|cpsr|fp|ip)$` -}}
+<div class="highlight"><pre class="chroma"><code>
+{{- range $i, $line := split (strings.TrimSuffix "\n" .Inner) "\n" -}}
+{{- if $i }}{{ "\n" }}{{ end -}}
+{{- $code := $line -}}{{- $cmt := "" -}}
+{{- with findRESubmatch `^([^@;]*)([@;].*)$` $line 1 -}}{{- $code = index (index . 0) 1 -}}{{- $cmt = index (index . 0) 2 -}}{{- end -}}
+{{- $m := index (findRESubmatch `^(\s*)((?:[0-9a-fA-F]+ <[^>]*>:)|(?:[A-Za-z_0-9]+:))?(\s*)([a-z][a-z0-9.]*)?(.*)$` $code 1) 0 -}}
+{{- index $m 1 -}}
+{{- with index $m 2 -}}<span class="nl">{{ . }}</span>{{- end -}}
+{{- index $m 3 -}}
+{{- with index $m 4 -}}<span class="k">{{ . }}</span>{{- end -}}
+{{- range findRE $tok (index $m 5) -}}
+  {{- if hasPrefix . "<" -}}<span class="nf">{{ . }}</span>
+  {{- else if or (hasPrefix . "#") (hasPrefix . "=") (hasPrefix . "0x") -}}<span class="mh">{{ . }}</span>
+  {{- else if findRE $regs . -}}<span class="nv">{{ . }}</span>
+  {{- else if findRE `^[0-9]+$` . -}}<span class="mi">{{ . }}</span>
+  {{- else if findRE `^[A-Z][A-Z0-9_]+$` . -}}<span class="nl">{{ . }}</span>
+  {{- else -}}{{ . }}
+  {{- end -}}
+{{- end -}}
+{{- with $cmt -}}<span class="c1">{{ . }}</span>{{- end -}}
+{{- end -}}
+</code></pre></div>

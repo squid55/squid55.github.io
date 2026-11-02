@@ -34,3 +34,26 @@
 /* 셸 프롬프트 · 오류 */
 .chroma .gp { color: var(--text-3); user-select: none; }
 .chroma .err { text-decoration: underline wavy var(--text-3); }
+
+/* 글 단위 색 강조 — front matter 에 codecolor: true 를 둔 글만 */
+.code-color {
+  --code-k: #cf222e; --code-nv: #0550ae; --code-num: #0a7b3e; --code-nf: #8250df;
+  --code-nl: #953800; --code-s: #0a3069; --code-c: #6e7781;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .code-color {
+    --code-k: #ff7b72; --code-nv: #79c0ff; --code-num: #7ee787; --code-nf: #d2a8ff;
+    --code-nl: #ffa657; --code-s: #a5d6ff; --code-c: #8b949e;
+  }
+}
+:root[data-theme="dark"] .code-color {
+  --code-k: #ff7b72; --code-nv: #79c0ff; --code-num: #7ee787; --code-nf: #d2a8ff;
+  --code-nl: #ffa657; --code-s: #a5d6ff; --code-c: #8b949e;
+}
+.code-color .chroma :is(.k, .kc, .kd, .kn, .kp, .kr, .kt) { color: var(--code-k); }
+.code-color .chroma :is(.nv, .nb) { color: var(--code-nv); }
+.code-color .chroma :is(.m, .mb, .mf, .mh, .mi, .il, .mo) { color: var(--code-num); }
+.code-color .chroma :is(.nf, .fm) { color: var(--code-nf); }
+.code-color .chroma :is(.nl, .cp, .cpf) { color: var(--code-nl); }
+.code-color .chroma :is(.s, .s1, .s2, .sa, .sb, .sc, .dl, .sd, .se, .sh, .si, .sx, .sr, .ss) { color: var(--code-s); }
+.code-color .chroma :is(.c, .c1, .cm, .cs, .ch) { color: var(--code-c); }

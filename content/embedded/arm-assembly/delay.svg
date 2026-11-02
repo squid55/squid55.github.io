@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="dg" width="680" height="232" viewBox="0 0 680 232">
+  <style>
+    .dg text { font-family: -apple-system, "Segoe UI", Arial, "Malgun Gothic", sans-serif; fill: var(--dg-text, #111); }
+    .dg .bar { fill: var(--dg-line, #555); }
+    .dg .ax  { stroke: var(--dg-line, #555); stroke-width: 1; opacity: .5; }
+    .dg .grid { stroke: var(--dg-line, #555); stroke-width: 1; opacity: .15; }
+    .dg .t   { font-size: 12.5px; }
+    .dg .tb  { font-size: 13px; font-weight: 700; }
+    .dg .ts  { font-size: 11px; opacity: .75; }
+  </style>
+  <text class="tb" x="20" y="22">LED 쓰기와 다음 쓰기 사이에 실행한 명령 수 (실측)</text>
+  <!-- 눈금: 0, 2M, 4M, 6M  (x = 210 + v / 6,000,000 * 400) -->
+  <line class="grid" x1="343.3" y1="40" x2="343.3" y2="200"/>
+  <line class="grid" x1="476.7" y1="40" x2="476.7" y2="200"/>
+  <line class="grid" x1="610"   y1="40" x2="610"   y2="200"/>
+  <line class="ax" x1="210" y1="40" x2="210" y2="200"/>
+  <text class="ts" x="210"   y="218" text-anchor="middle">0</text>
+  <text class="ts" x="343.3" y="218" text-anchor="middle">200만</text>
+  <text class="ts" x="476.7" y="218" text-anchor="middle">400만</text>
+  <text class="ts" x="610"   y="218" text-anchor="middle">600만</text>
+
+  <g><title>어셈블리: 1,966,086</title>
+    <text class="t" x="200" y="62" text-anchor="end">어셈블리</text>
+    <rect class="bar" x="210" y="49" width="131.1" height="18" rx="3"/>
+    <text class="t" x="347" y="62">1,966,086</text></g>
+  <g><title>C -O0: 5,898,253</title>
+    <text class="t" x="200" y="94" text-anchor="end">C, -O0</text>
+    <rect class="bar" x="210" y="81" width="393.2" height="18" rx="3"/>
+    <text class="t" x="609" y="94">5,898,253</text></g>
+  <g><title>C -O2: 4</title>
+    <text class="t" x="200" y="126" text-anchor="end">C, -O2</text>
+    <rect class="bar" x="210" y="113" width="2" height="18"/>
+    <text class="t" x="218" y="126">4 (딜레이 없음)</text></g>
+  <g><title>C -O2, volatile 카운터: 5,898,248</title>
+    <text class="t" x="200" y="158" text-anchor="end">C, -O2, volatile</text>
+    <rect class="bar" x="210" y="145" width="393.2" height="18" rx="3"/>
+    <text class="t" x="609" y="158">5,898,248</text></g>
+  <g><title>인라인 asm -O2: 1,966,086</title>
+    <text class="t" x="200" y="190" text-anchor="end">인라인 asm, -O2</text>
+    <rect class="bar" x="210" y="177" width="131.1" height="18" rx="3"/>
+    <text class="t" x="347" y="190">1,966,086</text></g>
+</svg>

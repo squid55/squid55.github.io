@@ -1,7 +1,7 @@
 {{ define "main" }}
 {{ partial "breadcrumbs.html" . }}
 <div class="article-grid{{ if not (and .Params.toc (ge (len .Fragments.Headings) 1)) }} no-toc{{ end }}">
-  <article class="article">
+  <article class="article{{ if .Params.codecolor }} code-color{{ end }}">
     <header class="page-head">
       <h1>{{ .Title }}</h1>
       {{ with .Description }}<p class="lead">{{ . }}</p>{{ end }}

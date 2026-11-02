@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="dg" width="680" height="230" viewBox="0 0 680 230">
+  <style>
+    .dg text { font-family: -apple-system, "Segoe UI", Arial, "Malgun Gothic", sans-serif; fill: var(--dg-text, #111); }
+    .dg .bx  { fill: var(--dg-fill, #eee); stroke: var(--dg-line, #555); stroke-width: 1.2; }
+    .dg .bx2 { fill: var(--dg-fill2, #fff); stroke: var(--dg-line, #555); stroke-width: 1.2; }
+    .dg .ln  { stroke: var(--dg-line, #555); stroke-width: 1.2; fill: none; }
+    .dg .t   { font-size: 12.5px; }
+    .dg .tb  { font-size: 13px; font-weight: 700; }
+    .dg .ts  { font-size: 11px; opacity: .8; }
+    .dg .mono { font-family: "DejaVu Sans Mono", Consolas, monospace; }
+  </style>
+  <text class="tb" x="20" y="22">0x30002000에 쓰는 32비트 값 (r4 = ~r2 | 0x100)</text>
+  <!-- 비트 번호 -->
+  <text class="ts mono" x="22"  y="50">31</text>
+  <text class="ts mono" x="368" y="50" text-anchor="end">9</text>
+  <text class="ts mono" x="410" y="50" text-anchor="middle">8</text>
+  <text class="ts mono" x="444" y="50">7</text>
+  <text class="ts mono" x="658" y="50" text-anchor="end">0</text>
+  <!-- 칸 -->
+  <rect class="bx2" x="20"  y="56" width="360" height="44"/>
+  <rect class="bx"  x="380" y="56" width="60"  height="44"/>
+  <rect class="bx2" x="440" y="56" width="220" height="44"/>
+  <text class="t mono" x="200" y="83" text-anchor="middle">1111 1111 1111 1111 1111 111</text>
+  <text class="tb mono" x="410" y="83" text-anchor="middle">1</text>
+  <text class="t mono" x="550" y="83" text-anchor="middle">~r2 (LED 8개)</text>
+  <!-- 설명 -->
+  <path class="ln" d="M200,100 V120"/>
+  <text class="t" x="200" y="136" text-anchor="middle">r2 ≤ 0xFF 이므로 mvn 결과가 항상 1</text>
+  <text class="ts" x="200" y="152" text-anchor="middle">LED 레지스터가 쓰지 않는 자리</text>
+  <path class="ln" d="M410,100 V170"/>
+  <text class="t" x="410" y="186" text-anchor="middle">출력 활성화 비트</text>
+  <text class="ts" x="410" y="202" text-anchor="middle">mvn에서 이미 1, orr #0x100은 값을 바꾸지 않는다</text>
+  <path class="ln" d="M550,100 V120"/>
+  <text class="t" x="550" y="136" text-anchor="middle">r2 = 0xFE → 00000001</text>
+  <text class="ts" x="550" y="152" text-anchor="middle">r2가 줄면 LED 값은 올라간다</text>
+</svg>
