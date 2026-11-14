@@ -145,4 +145,33 @@
       obj.requestFullscreen().catch(() => window.open(a.href, "_blank"));
     });
   });
+
+  // ── 대문 무한 스크롤 ─────────────────────────────────────────────
+  // layouts/home.html 의 #more 링크(다음 쪽)를 바닥 근처에서 받아 목록을 이어 붙인다.
+  const list = document.getElementById("post-list");
+  const more = document.getElementById("more");
+  if (list && more && "IntersectionObserver" in window) {
+    let busy = false;
+    const load = async () => {
+      const a = more.querySelector("a[rel=next]");
+      if (busy || !a) return;
+      busy = true;
+      a.textContent = "불러오는 중…";
+      try {
+        const res = await fetch(a.href);
+        if (!res.ok) throw new Error(res.status);
+        const doc = new DOMParser().parseFromString(await res.text(), "text/html");
+        doc.querySelectorAll("#post-list > li").forEach((li) => list.append(document.adoptNode(li)));
+        const next = doc.querySelector("#more a[rel=next]");
+        if (next) { a.href = next.getAttribute("href"); a.textContent = "이전 글 더 보기"; }
+        else { io.disconnect(); more.remove(); }
+      } catch {
+        a.textContent = "이전 글 더 보기";
+      }
+      busy = false;
+    };
+    const io = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) load(); },
+      { rootMargin: "600px 0px" });
+    io.observe(more);
+  }
 })();

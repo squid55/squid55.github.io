@@ -118,6 +118,10 @@ main.wrap { padding-top: 2.5rem; }
   .item .thumb { grid-column: 1; }
 }
 
+.more { margin: 2rem 0 0; font-size: .9rem; color: var(--text-3); }
+.more a { color: var(--text-2); text-decoration: none; }
+.more a:hover { color: var(--text); text-decoration: underline; }
+
 .tag-cloud { display: flex; flex-wrap: wrap; gap: .4rem 1rem; }
 .tag-cloud a { text-decoration: none; }
 .tag-cloud span { font-family: var(--mono); font-size: .75rem; }

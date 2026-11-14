@@ -1,8 +1,19 @@
 {{ define "main" }}
 <h1 class="visually-hidden">{{ site.Title }}</h1>
-<ul class="list">
-  {{ range first site.Params.home.recent (where site.RegularPages "Type" "!=" "page").ByDate.Reverse }}
+{{/*
+  대문 목록은 site.Params.home.recent 편씩 /page/N/ 으로 나눈다.
+  assets/js/site.js 가 바닥에 닿으면 다음 쪽의 목록을 받아 이어 붙인다(무한 스크롤).
+  스크립트가 없으면 아래 「이전 글」 링크로 넘어간다.
+*/}}
+{{ $pager := .Paginate (where site.RegularPages "Type" "!=" "page").ByDate.Reverse site.Params.home.recent }}
+<ul class="list" id="post-list">
+  {{ range $pager.Pages }}
     {{ partial "item.html" (dict "page" .) }}
   {{ end }}
 </ul>
+{{ with $pager.Next }}
+<nav class="more" id="more" aria-label="이전 글">
+  <a href="{{ .URL }}" rel="next">이전 글 더 보기</a>
+</nav>
+{{ end }}
 {{ end }}
