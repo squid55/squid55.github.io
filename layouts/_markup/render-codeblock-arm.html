@@ -21,7 +21,7 @@
   {{- else if or (hasPrefix . "#") (hasPrefix . "=") (hasPrefix . "0x") -}}<span class="mh">{{ . }}</span>
   {{- else if findRE $regs . -}}<span class="nv">{{ . }}</span>
   {{- else if findRE `^[0-9]+$` . -}}<span class="mi">{{ . }}</span>
-  {{- else if findRE `^[A-Z][A-Z0-9_]+$` . -}}<span class="nl">{{ . }}</span>
+  {{- else if findRE `^[A-Z][A-Za-z0-9_]+$` . -}}<span class="nl">{{ . }}</span>
   {{- else -}}{{ . }}
   {{- end -}}
 {{- end -}}

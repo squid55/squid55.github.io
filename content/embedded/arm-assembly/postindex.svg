@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="dg" width="680" height="250" viewBox="0 0 680 250">
+  <style>
+    .dg text { font-family: -apple-system, "Segoe UI", Arial, "Malgun Gothic", sans-serif; fill: var(--dg-text, #111); }
+    .dg .bx  { fill: var(--dg-fill, #eee); stroke: var(--dg-line, #555); stroke-width: 1.2; }
+    .dg .bx2 { fill: var(--dg-fill2, #fff); stroke: var(--dg-line, #555); stroke-width: 1.2; }
+    .dg .ln  { stroke: var(--dg-line, #555); stroke-width: 1.4; fill: none; }
+    .dg .ah  { fill: var(--dg-line, #555); }
+    .dg .t   { font-size: 12.5px; }
+    .dg .tb  { font-size: 13px; font-weight: 700; }
+    .dg .ts  { font-size: 11px; opacity: .8; }
+    .dg .mono { font-family: "DejaVu Sans Mono", Consolas, monospace; }
+  </style>
+  <defs><marker id="pi-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+  <text class="tb" x="20" y="22">ldr r2, [r3], #4 — 읽고 나서 r3에 4를 더한다 (post-index)</text>
+  <!-- 메모리 칸: 워드 64개 중 앞 5개와 마지막 -->
+  <rect class="bx"  x="40"  y="70" width="90" height="40"/>
+  <rect class="bx2" x="130" y="70" width="90" height="40"/>
+  <rect class="bx2" x="220" y="70" width="90" height="40"/>
+  <rect class="bx2" x="310" y="70" width="90" height="40"/>
+  <text class="t" x="445" y="95" text-anchor="middle">…</text>
+  <rect class="bx2" x="490" y="70" width="90" height="40"/>
+  <text class="t mono" x="85"  y="95" text-anchor="middle">p[0]</text>
+  <text class="t mono" x="175" y="95" text-anchor="middle">p[1]</text>
+  <text class="t mono" x="265" y="95" text-anchor="middle">p[2]</text>
+  <text class="t mono" x="355" y="95" text-anchor="middle">p[3]</text>
+  <text class="t mono" x="535" y="95" text-anchor="middle">p[63]</text>
+  <!-- 주소 -->
+  <text class="ts mono" x="40"  y="64">+0</text>
+  <text class="ts mono" x="130" y="64">+4</text>
+  <text class="ts mono" x="220" y="64">+8</text>
+  <text class="ts mono" x="310" y="64">+12</text>
+  <text class="ts mono" x="490" y="64">+252</text>
+  <text class="ts mono" x="580" y="64" text-anchor="end">+255</text>
+  <!-- 1회차 -->
+  <text class="t mono" x="85" y="150" text-anchor="middle">r3</text>
+  <path class="ln" d="M85,136 V114" marker-end="url(#pi-arr)"/>
+  <path class="ln" d="M100,150 C120,172 140,172 158,154" marker-end="url(#pi-arr)"/>
+  <text class="ts" x="130" y="186" text-anchor="middle">r3 += 4</text>
+  <text class="t mono" x="175" y="150" text-anchor="middle">r3</text>
+  <path class="ln" d="M175,136 V114" stroke-dasharray="3 3" marker-end="url(#pi-arr)"/>
+  <!-- 설명 -->
+  <text class="t" x="40" y="210">한 바퀴: r2 = p[i] 읽기 → r0 += r2 → r3가 다음 워드로 → r1 -= 1</text>
+  <text class="t" x="40" y="232">64바퀴 × 4바이트 = 256바이트. 끝나면 r3는 p + 256을 가리킨다</text>
+</svg>
