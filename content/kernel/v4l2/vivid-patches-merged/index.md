@@ -1,8 +1,9 @@
 ---
-title: "패치 세 개가 트리에 들어갔다"
+title: "linux-media kernel patch"
 description: "accepted 알림부터 확인까지. 메인테이너가 바꾼 두 줄과, 아직 메인라인에 없는 두 개"
 date: 2026-11-14
 tags: [linux-media, vivid, 패치, patchwork, stable]
+cover: "img/01-patchwork-list.jpg"
 kernel: "7.4-rc1 (mainline), media-committers next"
 toc: true
 ---
@@ -26,6 +27,10 @@ Accepted 로 바뀌었다는 내용이다.
 [모듈을 배우다 버그를 찾다](../../guides/kernel-guide-04/index.md) 와
 [첫 패치가 머지되기까지](../../guides/kernel-guide-05/index.md) 에 적었다.
 
+![세 번째 패치의 변경 내용](img/04-patch-diff.jpg "patchwork 에 남아 있는 세 번째 패치의 diff. INIT_WORK 두 줄을 구조체 할당 직후로 옮긴 것이 전부다")
+
+고친 줄은 둘뿐이다. 찾는 데 걸린 시간이 고치는 시간보다 훨씬 길었다.
+
 ## 상태 확인
 
 patchwork 는 API 가 열려 있어서 메일을 기다리지 않아도 상태를 볼 수 있다.
@@ -42,6 +47,10 @@ for p in sorted(json.load(sys.stdin), key=lambda x: x["date"]):
 159898 2026-09-15 accepted  media: vivid: Remove unused overlay format declarations
 160231 2026-09-16 accepted  media: vivid: initialize control update work items early
 ```
+
+![patchwork 목록](img/01-patchwork-list.jpg "submitter 로 거른 patchwork 목록. 세 건 모두 Accepted 이고 Delegate 는 hverkuil 이다")
+
+웹에서는 `?submitter=<번호>&state=*` 로 거르면 내 패치만 한 화면에 나온다.
 
 accepted 는 메인테이너가 자기 트리에 적용했다는 뜻이다. 그게 리누스 트리까지 갔다는 뜻은
 아니다. 실제로 들어갔는지는 트리에서 직접 찾는 편이 확실하다.
@@ -83,6 +92,8 @@ Hans 는 붙일 만하다고 본 것이고, 그래서 이 수정은 안정화 �
 세 패치 모두 `Assisted-by: LLM` 을 달아 보냈다. 트리에 들어간 것을 보면 첫 번째에는
 남아 있고 두 번째와 세 번째에는 없다. 같은 사람이 같은 기간에 다르게 처리했다.
 
+![보낸 커밋 메시지](img/03-commit-message.jpg "patchwork 에 보관된 세 번째 패치의 원문. Fixes 아래에 Assisted-by: LLM 이 있고 Cc: stable 은 없다")
+
 왜 그랬는지는 물어보지 않아서 모른다. 트레일러를 지운 이유를 설명하는 답장도 없었다.
 
 ## 메인라인까지
@@ -116,6 +127,11 @@ v7.4-rc1
 첫 패치는 7.4 머지 윈도에 포함됐고, 나머지 둘은 시기가 지나 다음 창을 기다리는 중이다.
 세 패치의 발송 간격이 사흘인데 갈라졌다.
 
+![메인라인 커밋 페이지](img/02-mainline-commit.jpg "git.kernel.org 의 커밋 페이지. author 는 보낸 사람, committer 는 메인테이너로 따로 남는다")
+
+author 와 committer 가 나뉘어 기록되는 것도 이번에 처음 봤다. 메일로 보낸 패치를
+메인테이너가 자기 트리에 적용하면 작성자는 그대로 두고 적용한 사람이 committer 로 붙는다.
+
 ## 지금까지 걸린 시간
 
 | 날짜 | 일 |
@@ -127,3 +143,8 @@ v7.4-rc1
 
 두 달 동안 아무 연락이 없다가 네 시간 만에 두 단계가 끝났다. 중간에 재촉 메일을 보낼
 생각도 했는데 보내지 않았고, 결과적으로 보내지 않아도 됐다.
+
+![lore 스레드](img/05-lore-no-followups.jpg "lore 의 스레드 화면. Thread overview 가 no followups 로 나온다")
+
+lore 에서 보면 세 번째 패치 스레드는 `[no followups]` 다. 답장 한 통 없이 적용된 셈이다.
+리뷰 지적을 받고 v2 를 보내는 흐름을 예상했는데 이번에는 그런 과정이 없었다.
