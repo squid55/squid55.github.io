@@ -2,11 +2,14 @@ name: 블로그 배포
 
 # main 에 푸시하면 Hugo 로 빌드해 GitHub Pages 로 올린다.
 # draft: true 인 글은 올라가지 않는다.
+# 날짜가 미래인 글은 빌드에서 빠지므로, 매일 한 번 다시 빌드해 그날 날짜가 된 글을 공개한다.
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    - cron: '5 0 * * *'   # 매일 00:05 UTC = 09:05 KST
 
 permissions:
   contents: read
