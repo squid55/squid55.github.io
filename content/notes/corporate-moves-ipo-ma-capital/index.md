@@ -104,9 +104,60 @@ toc: true
 
 법인의 관점에서 읽으면, 기술은 제품이 아니라 어느 산업이 다음 자본을 받을지를 정하는 변수다. 2절의 자본이 수익률을 따라간다면, 수익률이 어디서 나올지는 기술이 정한다.
 
-## 6. 논리 사슬
+## 6. 읽고 나서 느낀 네 가지와 그 근거
 
-다섯 절을 한 줄로 이으면 이렇다. 기술이 다음 수익률의 자리를 정하고, 자본은 그 자리를 따라 국경을 넘으며, 어느 자본이 어느 법인을 가질 수 있는지는 두 정부의 한도와 통제 명단이 정하고, 법인의 가격은 그 규제 전제 위에서 계산되며, 전제가 바뀌는 순간 상장이 멈추거나 보증이 깨지고, 그때 법인이 버티는 힘은 이익이 아니라 현금흐름이다.
+위 자료를 읽으면서 네 가지 생각이 남았다. 금리는 신용과 신뢰다. 환율은 대외적인 신뢰도다. 어떤 기관의 금융 상품에 끼어 들어가면 그 안에 든 것은 자동으로 사고팔린다. 모두가 같은 데이터로 AI를 쓰면 같은 투자를 하고, 한곳으로 쏠리기 때문에 떨어질 때 한 번에 떨어진다. 느낌으로 두지 않으려고 용어를 정리하고 논문과 감독기관 보고서로 근거를 찾아봤다.
+
+### 용어
+
+| 용어 | 뜻 |
+|---|---|
+| 무위험 금리 | 손실 위험이 없다고 보는 투자의 수익률. 실무에서는 AAA 국가의 무이표채 금리를 쓴다 |
+| 신용 스프레드 | 같은 만기의 무위험 금리 위에 얹히는 추가 금리. 빌리는 쪽의 부도 위험과 유동성 위험의 가격 |
+| CDS | 채권의 부도에 대한 보험. 그 보험료가 CDS 스프레드이고, 시장이 보는 부도 확률의 척도로 쓴다 |
+| 국가 신용위험 | 정부가 외화 채무를 갚지 못할 위험. 국가 CDS 스프레드로 잰다 |
+| 외환보유액 | 중앙은행이 가진 외화 자산. 외화 채무의 만기가 돌아올 때 갚을 수 있는지의 근거 |
+| 지수 편입 | 종목이 S&P 500, 코스피200 같은 지수에 들어가는 것. 지수를 따르는 펀드는 편입과 동시에 사고 제외와 동시에 판다 |
+| 패시브 투자 | 지수를 그대로 복제하는 투자. 인덱스 펀드와 ETF가 대표다 |
+| 추락 천사 | 투자등급에서 투기등급으로 강등된 채권. 투자등급만 보유할 수 있는 기관은 규정에 따라 팔아야 한다 |
+| 캐리 트레이드 | 금리가 낮은 통화로 빌려 금리가 높은 자산에 투자하는 것. 빌린 통화가 강해지면 한꺼번에 되감긴다 |
+| 디레버리징 | 빌린 돈으로 늘린 포지션을 줄이는 것. 손실이 나면 추가 증거금 요구 때문에 강제로 일어난다 |
+| 군집행동 | 여러 투자자가 같은 신호를 보고 같은 방향으로 움직이는 것 |
+| 모델 동질화 | 많은 기관이 같은 데이터와 같은 모델을 쓰면서 판단이 하나로 수렴하는 것 |
+
+### 금리는 신용과 신뢰다
+
+금리를 둘로 쪼개면 보인다. 무위험 금리 위에 신용 스프레드가 얹힌다. 스프레드는 빌리는 쪽이 갚을 것이라는 믿음의 가격이고, 믿음이 흔들리면 부도 위험이 그대로여도 유동성 프리미엄이 더해져 스프레드가 벌어진다. 2013년 덴마크 중앙은행 연구는 2000년부터 2010년까지 국가 CDS 스프레드에서 신용위험 프리미엄이 전체의 약 3분의 1이었다고 추정했다. 나머지는 유동성과 위험 회피의 몫이다. 4절에서 회사채 스프레드를 상시 점검하라고 한 조언은 이 분해 위에 있다. 스프레드는 그 법인에 대한 시장의 신뢰를 매일 숫자로 보여 준다.
+
+### 환율은 대외적인 신뢰도다
+
+Della Corte, Sarno, Schmeling, Wagner의 2022년 Management Science 논문은 국가 CDS 스프레드가 오르면 같은 기간에 그 나라 통화가 절하되고 변동성이 커진다는 것을 보였다. 이 관계는 위험 프리미엄보다 부도 기대의 변화가 주로 이끌고, 통화 수익률의 횡단면에서 국가 신용위험 요인이 가격에 반영되며 캐리 요인으로 설명되지 않는다. 환율이 그 나라의 대외 신용을 반영한다는 생각을 데이터로 뒷받침하는 결과다.
+
+한국의 1997년이 그 극단이다. 외환보유액은 약 300억 달러에서 12월에 약 40억 달러로 줄었고, 외채는 1,530억 달러였다. 외국 은행들이 단기 채무의 만기 연장을 거부하자 원화는 11월 19일부터 12월 24일 사이에 달러 대비 절반 넘게 떨어져 1,995원을 찍었다. IMF는 12월 4일 구제금융을 승인했다. 외화 채무를 갚을 수 있다는 믿음이 사라지면 환율이 먼저 움직이고, 믿음을 되살리는 비용은 구제금융의 조건으로 치른다. 2절의 삼불원칙으로 보면, 환율을 안정시키려면 자본 이동을 묶거나 통화정책을 포기해야 하는데 1997년의 한국은 그 둘을 다 잃고 있었다.
+
+### 금융 상품에 끼어 들어가면 자동으로 사고팔린다
+
+지수를 따르는 펀드는 종목을 고르지 않는다. 편입되면 사고 제외되면 판다. Greenwood와 Sammon의 2025년 Journal of Finance 논문은 S&P 500 편입 종목의 초과 수익이 1990년대 이후 크게 줄어 최근 10년은 통계적으로 0과 구별되지 않는다고 보고한다. 이유는 패시브가 사라져서가 아니라, 편입되는 회사의 규모가 지수 전체에 비해 작아졌고 S&P 500 편입이 S&P 중형주 지수 제외와 맞물려 순수요 충격이 상쇄되기 때문이다. 자동 매매 자체는 그대로다. Pavlova와 Sikorskaya는 Russell 지수의 경계선 연구에서, 경계 바로 아래 종목은 강제 매수를 받고 바로 위 종목은 받지 않는다는 것과, 지수 편입이 펀드의 비탄력적 수요 때문에 그 종목의 위험 프리미엄을 영구히 낮춘다는 것을 보였다.
+
+파는 쪽도 같다. 투기등급으로 강등된 추락 천사는 투자등급만 보유할 수 있는 보험사와 펀드가 규정에 따라 판다. 유럽중앙은행의 2020년 금융안정보고서 상자글은 추락 천사 강등 시점에 펀드 포트폴리오에서 그 채권의 비중이 줄어드는 반면 다른 강등에서는 그렇지 않다고 보고한다. 다만 그 매도가 가격을 누르는지는 논쟁이 있다. Ellul, Jotikasthira, Lundblad는 보험사의 강제 매도가 가격 반전을 낳는다고 봤고, Ambrose, Cai, Helwege는 정보 효과를 통제하면 가격 압력이 거의 없다고 반박했다. 강제 매도가 일어난다는 사실에는 양쪽이 동의한다. 가격에 남는 흔적의 크기가 쟁점이다.
+
+### 같은 데이터로 같은 투자를 하면 한 번에 떨어진다
+
+이 생각은 AI 이전부터 사례가 있다. Khandani와 Lo는 2007년 8월 6일 주간에 퀀트 롱숏 헤지펀드들이 전례 없는 손실을 본 일을 분석했다. 비슷하게 구성된 포트폴리오가 동시에 디레버리징하면서 생긴 일시적 이탈이라는 가설을 세웠고, 시뮬레이션은 8월 1일의 작은 되감기와 8월 6일 개장부터의 큰 되감기를 가리켰다. 같은 요인 모델, 같은 데이터, 같은 전략을 쓰던 펀드들이 한쪽이 포지션을 줄이자 모두 같은 종목을 팔아야 했다. MSCI의 후속 분석은 기관들이 특정 투자 스타일이 얼마나 붐볐는지 알아차리지 못했다고 덧붙인다.
+
+2018년 2월 5일에는 S&P 500이 4% 떨어지는 동안 VIX가 하루에 115% 뛰었다. BIS 분기보고서에 따르면 변동성 상품들이 일일 목표 노출을 맞추려고 장 마감 직전에 VIX 선물을 사야 했고, 16시 08분 1분 동안 115,862계약이 거래됐다. 인버스 변동성 상품 XIV는 84% 떨어져 청산됐다. 상품의 재조정 규칙이 모두 같은 방향의 매수를 같은 시각에 요구한 결과다.
+
+2024년 8월 5일 닛케이 225는 12.4% 떨어졌다. 1987년 이후 가장 큰 하락이었다. 전주 일본은행이 금리를 0.25%로 올리고 국채 매입 축소를 발표해 엔화가 강해졌고, BIS 불러틴은 대규모 외환 캐리 트레이드 포지션이 변동성 급등에 가장 민감했으며 대부분 강제로 되감겼다고 썼다. 미국 고용 지표 부진이 겹쳤다. 같은 자금 조달 통화, 같은 레버리지, 같은 손절 규칙이 하루에 풀렸다.
+
+AI에 대해서는 감독기관의 경고와 반대 증거가 같이 있다. 금융안정위원회(FSB)의 2024년 11월 보고서는 AI가 시스템 리스크를 키울 수 있는 취약점으로 제3자 의존과 공급자 집중, 시장 상관관계, 사이버 위험, 모델 위험과 데이터 품질 넷을 들었다. 많은 기관이 같은 데이터로 학습하거나 같은 외부 모델을 쓰면 전략과 위험 평가가 동기화된다는 것이 시장 상관관계 항목의 요지다. IMF의 2024년 10월 금융안정보고서 3장은 시뮬레이션과 시장 참여자 면담에서 암묵적 알고리즘 담합, 군집행동, 경기순응성 증가의 가능성을 봤다고 적었다. 미국 SEC 의장 Gensler는 소수의 기반 데이터와 기반 모델에 금융권 대부분이 의존하게 되는 것을 우려했다.
+
+반대 증거도 적는다. 연방준비제도 연구진(Hansen, Lee, 2025)은 LLM에 실험실 방식의 군집행동 실험을 해 AI가 사람보다 덜 군집한다는 결과를 얻었고, Sabkha와 Jbir의 2025년 연구는 2010년부터 2025년까지 미국 금융주에서 AI 도입이 평균적으로 군집행동을 늘리지는 않지만 시장이 나쁠 때는 비선형적으로 증폭시킨다고 보고했다. 내 생각과 맞는 쪽은 뒤의 조건부 결과다. 평소에는 분산돼 보이다가 떨어질 때 한 번에 떨어진다는 것이 2007년, 2018년, 2024년의 공통점이고, AI는 그 공통점을 만드는 같은 데이터와 같은 모델을 더 넓게 퍼뜨린다.
+
+네 가지를 1절부터 5절의 법인 이야기에 얹으면 이렇다. 법인의 신용은 스프레드로, 나라의 신용은 환율로 매일 값이 매겨진다. 그 값이 지수와 등급의 경계를 넘는 순간 사람의 판단 없이 매매가 일어난다. 경계를 넘는 법인이 많아지고 그 판단을 같은 모델이 내리면, 떨어지는 날은 하루가 된다.
+
+## 7. 논리 사슬
+
+1절부터 5절을 한 줄로 이으면 이렇다. 기술이 다음 수익률의 자리를 정하고, 자본은 그 자리를 따라 국경을 넘으며, 어느 자본이 어느 법인을 가질 수 있는지는 두 정부의 한도와 통제 명단이 정하고, 법인의 가격은 그 규제 전제 위에서 계산되며, 전제가 바뀌는 순간 상장이 멈추거나 보증이 깨지고, 그때 법인이 버티는 힘은 이익이 아니라 현금흐름이다.
 
 이 연결은 내가 자료를 읽으면서 그어 본 선이다. 칼럼과 강연이 그렇게 한 문장으로 말한 것은 아니다. 2019년의 기술패권 전쟁과 2026년의 칩플레이션이 같은 선 위에 있다는 것, 2021년의 자본은 이익을 따라 편을 바꾼다는 말과 2026년의 매출보다 현금흐름이라는 말이 같은 법인관에서 나온다는 것은 자료에서 읽은 대로다.
 
@@ -136,3 +187,21 @@ toc: true
 - [Five things to know about the Baoshang Bank takeover](https://www.caixinglobal.com/2019-05-30/five-things-to-know-about-the-baoshang-bank-takeover-101421827.html) Caixin, 2019-05-30
 - [With bank lifelines, regulators weigh stability against accountability](https://www.caixinglobal.com/2019-09-09/in-depth-with-bank-lifelines-regulators-weigh-stability-against-accountability-101460493.html) Caixin, 2019-09-09
 - [Impossible trinity](https://en.wikipedia.org/wiki/Impossible_trinity) Wikipedia
+
+논문과 감독기관 보고서 (6절)
+
+- Della Corte, Sarno, Schmeling, Wagner, [Exchange Rates and Sovereign Risk](https://econpapers.repec.org/RePEc:inm:ormnsc:v:68:y:2022:i:8:p:5591-5617), Management Science 68(8), 2022
+- Danmarks Nationalbank, [Decomposing Government Yield Spreads into Credit and Liquidity Components](https://www.nationalbanken.dk/en/publications/Documents/2013/05/MON1Q_P2_2013_Decomposing%20Government%20Yield%20Spreads%20into%20Credit%20and%20Liquidity%20Components.pdf), 2013
+- BIS Quarterly Review, [Compressed credit spreads and the quest for a risk-free rate](https://www.bis.org/publ/qtrpdf/r_qt2512s.htm), 2025-12
+- NBER, [The Korean Currency Crisis](https://www.nber.org/crisis/korea_report.html); IMF, [Stand-by Credit for Korea](https://www.imf.org/en/News/Articles/2015/09/14/01/49/pr9755), 1997-12-04
+- Greenwood, Sammon, [The Disappearing Index Effect](https://www.nber.org/system/files/working_papers/w30748/w30748.pdf), Journal of Finance, 2025 (NBER w30748)
+- Pavlova, Sikorskaya, [Benchmarking Intensity](https://repec.cepr.org/repec/cpr/ceprdp/DP16909.pdf), CEPR DP16909
+- ECB Financial Stability Review, [Understanding what happens when angels fall](https://www.ecb.europa.eu/press/financial-stability-publications/fsr/focus/2020/html/ecb.fsrbox202011_03~578f4f74dc.en.html), 2020-11
+- Ambrose, Cai, Helwege, [Fallen Angels and Price Pressure](https://www.newyorkfed.org/medialibrary/media/research/conference/2010/cb/Ambrose_Cai_Helwege.pdf); Ellul, Jotikasthira, Lundblad, Regulatory Pressure and Fire Sales in the Corporate Bond Market, JFE 2011
+- Khandani, Lo, [What Happened to the Quants in August 2007?](https://www.nber.org/papers/w14465), NBER w14465
+- BIS Quarterly Review, [The equity market turbulence of 5 February: the role of exchange-traded volatility products](https://www.bis.org/publ/qtrpdf/r_qt1803t.htm), 2018-03
+- BIS Bulletin 90, [August 2024 market turbulence](https://www.bis.org/publ/bisbull90.pdf), 2024
+- FSB, [The Financial Stability Implications of Artificial Intelligence](https://www.fsb.org/uploads/P14112024.pdf), 2024-11-14
+- IMF, [Global Financial Stability Report, October 2024, Chapter 3](https://www.imf.org/en/publications/gfsr/issues/2024/10/22/global-financial-stability-report-october-2024)
+- Hansen, Lee, [Do AI agents herd?](https://www.federalreserve.gov/econres/feds/files/2025090pap.pdf), FEDS 2025-090
+- Sabkha, Jbir, [AI adoption and herding in US financial stocks](https://ideas.repec.org/p/hal/wpaper/hal-05556083.html), HAL working paper, 2025
