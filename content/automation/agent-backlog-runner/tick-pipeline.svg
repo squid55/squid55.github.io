@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="dg" width="680" height="250" viewBox="0 0 680 250">
+  <style>
+    .dg text { font-family: -apple-system, "Segoe UI", Arial, "Malgun Gothic", sans-serif; fill: var(--dg-text, #111); }
+    .dg .bx  { fill: var(--dg-fill, #eee); stroke: var(--dg-line, #555); stroke-width: 1.2; }
+    .dg .bx2 { fill: var(--dg-fill2, #fff); stroke: var(--dg-line, #555); stroke-width: 1.2; }
+    .dg .grp { fill: none; stroke: var(--dg-line, #555); stroke-width: 1; stroke-dasharray: 5 4; }
+    .dg .ln  { stroke: var(--dg-line, #555); stroke-width: 1.4; fill: none; }
+    .dg .dash { stroke: var(--dg-line, #555); stroke-width: 1.4; fill: none; stroke-dasharray: 4 4; }
+    .dg .ah  { fill: var(--dg-line, #555); }
+    .dg .t   { font-size: 12.5px; }
+    .dg .tb  { font-size: 13px; font-weight: 700; }
+    .dg .ts  { font-size: 10.5px; opacity: .8; }
+  </style>
+  <defs><marker id="arr1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+  <rect class="bx" x="10" y="30" width="90" height="50" rx="4"/>
+  <text class="tb" x="55" y="51" text-anchor="middle">flock</text>
+  <text class="ts" x="55" y="68" text-anchor="middle">중복 실행 금지</text>
+  <rect class="bx" x="130" y="30" width="110" height="50" rx="4"/>
+  <text class="tb" x="185" y="51" text-anchor="middle">queue.py --next</text>
+  <text class="ts" x="185" y="68" text-anchor="middle">INBOX 수 확인</text>
+  <rect class="bx" x="270" y="30" width="100" height="50" rx="4"/>
+  <text class="tb" x="320" y="51" text-anchor="middle">백업</text>
+  <text class="ts" x="320" y="68" text-anchor="middle">BACKLOG, LOG 사본</text>
+  <rect class="bx2" x="400" y="30" width="110" height="50" rx="4"/>
+  <text class="tb" x="455" y="51" text-anchor="middle">claude -p</text>
+  <text class="ts" x="455" y="68" text-anchor="middle">항목 하나, 상한 안에서</text>
+  <rect class="bx" x="540" y="30" width="130" height="66" rx="4"/>
+  <text class="tb" x="605" y="51" text-anchor="middle">guard.py</text>
+  <text class="ts" x="605" y="68" text-anchor="middle">G1 형식 · G2 개인정보</text>
+  <text class="ts" x="605" y="84" text-anchor="middle">G3 발송 코드 · G4 LOG</text>
+  <line class="ln" x1="100" y1="55" x2="128" y2="55" marker-end="url(#arr1)"/>
+  <line class="ln" x1="240" y1="55" x2="268" y2="55" marker-end="url(#arr1)"/>
+  <line class="ln" x1="370" y1="55" x2="398" y2="55" marker-end="url(#arr1)"/>
+  <line class="ln" x1="510" y1="55" x2="538" y2="55" marker-end="url(#arr1)"/>
+  <!-- 비어 있으면 종료 -->
+  <line class="dash" x1="185" y1="80" x2="185" y2="130" marker-end="url(#arr1)"/>
+  <rect class="bx2" x="120" y="132" width="130" height="40" rx="4"/>
+  <text class="t" x="185" y="150" text-anchor="middle">항목도 INBOX도 없음</text>
+  <text class="ts" x="185" y="165" text-anchor="middle">모델 호출 없이 종료 (토큰 0)</text>
+  <!-- 게이트 결과 -->
+  <line class="ln" x1="610" y1="96" x2="610" y2="130" marker-end="url(#arr1)"/>
+  <rect class="bx" x="400" y="132" width="130" height="40" rx="4"/>
+  <text class="t" x="465" y="150" text-anchor="middle">PASS</text>
+  <text class="ts" x="465" y="165" text-anchor="middle">state.json · 알림 한 줄</text>
+  <rect class="bx2" x="540" y="132" width="135" height="40" rx="4"/>
+  <text class="t" x="607" y="150" text-anchor="middle">FAIL</text>
+  <text class="ts" x="607" y="165" text-anchor="middle">BACKLOG 되돌림, LOG 사유</text>
+  <line class="ln" x1="585" y1="96" x2="490" y2="130" marker-end="url(#arr1)"/>
+  <text class="ts" x="10" y="215">산출물은 FAIL 이어도 지우지 않는다. 다음 틱이 같은 항목을 다시 집는다.</text>
+  <text class="ts" x="10" y="235">runs/&lt;ws&gt;-&lt;시각&gt;/ 에 틱 전 사본, 모델 응답, stderr, guard.log 가 남는다.</text>
+</svg>
