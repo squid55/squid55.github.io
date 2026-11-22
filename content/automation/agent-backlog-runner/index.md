@@ -1,8 +1,8 @@
 ---
-title: "에이전트가 만든 프로그램으로 반복 업무를 돌리는 구조"
+title: "Business Process Automation"
 description: "대기열 파일 하나, 러너 스크립트 하나, 검증 게이트 하나. 세 가지 회사 업무를 세션 없이 계속 진행시키기 위해 만든 자동화의 설계와 첫날 결과"
 date: 2026-11-23T01:35:00+09:00
-tags: ["ai", "에이전트", "자동화", "claude code", "systemd", "업무"]
+tags: ["bpa", "ai", "에이전트", "자동화", "claude code", "systemd", "업무"]
 toc: true
 ---
 
