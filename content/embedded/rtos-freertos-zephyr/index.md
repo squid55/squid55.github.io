@@ -140,6 +140,26 @@ nRF91 계열은 LTE-M 과 NB-IoT 를 지원하는 SiP 다. Zephyr 문서에서 L
 | nRF9160 DK | LTE-M, NB-IoT |
 | nRF9151 DK, nRF9161 DK, nRF9131 EK | LTE-M, NB-IoT, GNSS, DECT NR+ |
 
+그중 nRF9151 DK 의 [제품 페이지](https://www.nordicsemi.com/Products/Development-hardware/nRF9151-DK) 에
+적힌 내용은 이렇다. nRF9160 DK 의 제품 페이지는 새 설계에 nRF9151 DK 를 권한다.
+
+![nRF9151 DK](img/16-nrf9151-dk.jpg "nRF9151 DK. 출처: Nordic Semiconductor")
+
+| 항목 | 내용 |
+|---|---|
+| 용도 | LTE-M, NB-IoT, GNSS, DECT NR+ |
+| SiP | nRF9151. 64 MHz Arm Cortex-M33, 플래시 1 MB, RAM 256 KB |
+| 보안 | Arm TrustZone, Arm CryptoCell |
+| LTE 밴드 | B1-B5, B8, B12, B13, B17-B20, B25, B26, B28, B65, B66, B85 |
+| 안테나 | LTE-M, NB-IoT, DECT NR+ 용 안테나와 GNSS 패치 안테나가 보드에 있음 |
+| SIM | nano(4FF) 슬롯과 MFF2 자리. 소프트웨어 SIM 도 지원. 무료 데이터가 든 SIM 동봉 |
+| 디버거 | SEGGER J-Link 가 보드에 내장 |
+| 보드 구성 | LED 4개, 버튼 4개, Arduino Uno Rev3 호환 |
+| 출하 펌웨어 | AT 명령으로 다루는 Serial LTE Modem 애플리케이션 |
+
+nRF52 DK 와 겉모습은 비슷하다. 둘 다 Arduino 호환 커넥터, LED 와 버튼 4개씩, 내장
+J-Link 를 갖고 있다. 다른 것은 무선이다.
+
 ## QEMU 에서 실행
 
 둘 다 공식 예제를 고치지 않고 Cortex-M3 에뮬레이터에서 돌렸다.
@@ -219,5 +239,7 @@ Zephyr 는 Discord 서버를 운영한다. 기여 문서에 적힌 주소는 <ht
 - 강의 영상: <https://www.youtube.com/watch?v=MwR26KT6EzU>
 - 유튜브 Baram: <https://www.youtube.com/@chcbaram>
 - Zephyr 문서: <https://docs.zephyrproject.org/>
+- nRF52 DK 제품 소개서: <https://nsscprodmedia.blob.core.windows.net/prod/software-and-other-downloads/product-briefs/nrf52-dk-product-brief.pdf>
+- nRF9151 DK 제품 페이지: <https://www.nordicsemi.com/Products/Development-hardware/nRF9151-DK>
 - FreeRTOS 커널 저장소: <https://github.com/FreeRTOS/FreeRTOS-Kernel>
 - FreeRTOS 교재: <https://github.com/FreeRTOS/FreeRTOS-Kernel-Book>
