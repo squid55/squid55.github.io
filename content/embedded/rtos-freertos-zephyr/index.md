@@ -110,6 +110,22 @@ FreeRTOS 는 힙 관리 방식을 heap_1 부터 heap_5 까지 다섯 가지 중�
 | 실행 단위 | 태스크 `xTaskCreate()` | 스레드 `k_thread_create()` |
 | 관리 주체 | FreeRTOS Team (AWS 직원) | Zephyr Project |
 
+## Zephyr 와 노르딕
+
+Zephyr 문서의 보드 목록에는 노르딕 세미컨덕터의 보드가 23종 있다. 노르딕도 Zephyr 를
+공식 경로로 삼고 있다. 노르딕 사이트는 예전 nRF5 SDK 가 유지보수 단계라고 밝히고, 새
+프로젝트에는 Zephyr 를 쓰는 nRF Connect SDK 를 권한다.
+
+![노르딕의 개발 키트](img/14-nordic-dk.jpg "노르딕 세미컨덕터의 개발 키트. 출처: Nordic Semiconductor")
+
+노르딕이 다른 보드와 다른 점은 LTE 다. nRF91 계열은 LTE-M 과 NB-IoT 를 지원하는
+SiP 다. Zephyr 문서에서 LTE 를 언급하는 노르딕 보드는 네 가지다.
+
+| 보드 | Zephyr 문서의 설명 |
+|---|---|
+| nRF9160 DK | LTE-M, NB-IoT |
+| nRF9151 DK, nRF9161 DK, nRF9131 EK | LTE-M, NB-IoT, GNSS, DECT NR+ |
+
 ## QEMU 에서 실행
 
 둘 다 공식 예제를 고치지 않고 Cortex-M3 에뮬레이터에서 돌렸다.
@@ -150,6 +166,12 @@ Message received from task
 없어서 Zephyr SDK 의 컴파일러와 예제 Makefile 의 `PICOLIBC=1` 옵션으로 빌드했다.
 추적 라이브러리(`FreeRTOS-Plus-Trace`) 하위 모듈도 따로 받아야 했다.
 {{< /note >}}
+
+FreeRTOS 저장소에는 QEMU 용 데모가 일곱 개 있고 RISC-V 용도 포함된다. 공식 문서에
+[RISC-V QEMU sifive_e 데모](https://freertos.org/Documentation/02-Kernel/03-Supported-devices/04-Demos/Others/RTOS-RISC-V-FreedomStudio-QMEU)
+안내가 있다. 이 데모는 돌려 보지 않았다.
+
+![FreeRTOS 문서의 RISC-V QEMU 데모 페이지](img/15-freertos-riscv-qemu.jpg "SiFive Freedom Studio 에서 빌드해 QEMU 의 sifive_e 모델로 실행하는 데모. 출처: freertos.org")
 
 ## 하드웨어에 올리는 흐름
 
