@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="dg" width="760" height="330" viewBox="0 0 760 330">
+  <style>
+    .dg text { font-family: -apple-system, "Segoe UI", Arial, "Malgun Gothic", sans-serif; fill: var(--dg-text, #111); }
+    .dg .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+    .dg .t   { font-size: 12.5px; }
+    .dg .tb  { font-size: 13px; font-weight: 700; }
+    .dg .ts  { font-size: 11px; opacity: .8; }
+    .dg .box { fill: none; stroke: var(--dg-line, #555); stroke-width: 1; }
+    .dg .art { fill: var(--dg-line, #555); fill-opacity: .10; stroke: var(--dg-line, #555); stroke-width: 1.4; }
+    .dg .hw  { fill: var(--dg-line, #555); fill-opacity: .28; stroke: var(--dg-line, #555); stroke-width: 1; }
+    .dg .ar  { stroke: var(--dg-text, #111); stroke-width: 1.2; fill: none; }
+    .dg .dash { stroke-dasharray: 4 3; }
+  </style>
+  <defs>
+    <marker id="arr-f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="var(--dg-text, #111)"/>
+    </marker>
+  </defs>
+
+  <text class="tb" x="20" y="24">소스에서 실행까지</text>
+
+  <!-- 입력 -->
+  <rect class="box" x="20" y="52" width="140" height="46"/>
+  <text class="t" x="90" y="72" text-anchor="middle">소스</text>
+  <text class="ts mono" x="90" y="89" text-anchor="middle">main.c</text>
+
+  <rect class="box" x="20" y="116" width="140" height="92"/>
+  <text class="t" x="90" y="136" text-anchor="middle">설정</text>
+  <text class="ts mono" x="90" y="156" text-anchor="middle">FreeRTOSConfig.h</text>
+  <text class="ts" x="90" y="172" text-anchor="middle">또는</text>
+  <text class="ts mono" x="90" y="188" text-anchor="middle">prj.conf, devicetree</text>
+
+  <!-- 빌드 -->
+  <rect class="art" x="200" y="98" width="120" height="62"/>
+  <text class="t" x="260" y="122" text-anchor="middle">크로스 컴파일</text>
+  <text class="ts mono" x="260" y="141" text-anchor="middle">make, west build</text>
+
+  <!-- ELF -->
+  <rect class="art" x="356" y="98" width="96" height="62"/>
+  <text class="t" x="404" y="122" text-anchor="middle">실행 파일</text>
+  <text class="ts mono" x="404" y="141" text-anchor="middle">.elf, .hex</text>
+
+  <!-- 위 경로: 에뮬레이터 -->
+  <rect class="hw" x="494" y="52" width="130" height="56"/>
+  <text class="t" x="559" y="75" text-anchor="middle">에뮬레이터</text>
+  <text class="ts mono" x="559" y="93" text-anchor="middle">qemu-system-arm</text>
+
+  <!-- 아래 경로: 프로브 → 보드 -->
+  <rect class="box" x="494" y="140" width="130" height="50"/>
+  <text class="t" x="559" y="161" text-anchor="middle">디버그 프로브</text>
+  <text class="ts mono" x="559" y="178" text-anchor="middle">ST-LINK, J-Link</text>
+
+  <rect class="hw" x="494" y="214" width="130" height="50"/>
+  <text class="t" x="559" y="235" text-anchor="middle">보드의 플래시</text>
+  <text class="ts" x="559" y="252" text-anchor="middle">리셋 후 실행</text>
+
+  <!-- 콘솔 -->
+  <rect class="box" x="664" y="52" width="76" height="212"/>
+  <text class="t" x="702" y="152" text-anchor="middle">시리얼</text>
+  <text class="t" x="702" y="170" text-anchor="middle">콘솔</text>
+
+  <!-- 화살표 -->
+  <path class="ar" d="M160,75 L196,112" marker-end="url(#arr-f)"/>
+  <path class="ar" d="M160,162 L196,142" marker-end="url(#arr-f)"/>
+  <path class="ar" d="M320,129 L352,129" marker-end="url(#arr-f)"/>
+  <path class="ar" d="M452,116 L490,86" marker-end="url(#arr-f)"/>
+  <path class="ar dash" d="M452,142 L490,162" marker-end="url(#arr-f)"/>
+  <path class="ar dash" d="M559,190 L559,210" marker-end="url(#arr-f)"/>
+  <path class="ar" d="M624,80 L660,80" marker-end="url(#arr-f)"/>
+  <path class="ar dash" d="M624,239 L660,239" marker-end="url(#arr-f)"/>
+  <text class="ts" x="642" y="72" text-anchor="middle">stdio</text>
+  <text class="ts" x="642" y="231" text-anchor="middle">UART</text>
+  <text class="ts" x="572" y="205">굽기</text>
+
+  <!-- 범례 -->
+  <line class="ar" x1="20" y1="290" x2="50" y2="290" marker-end="url(#arr-f)"/>
+  <text class="ts" x="58" y="294">이 글에서 실행한 경로</text>
+  <line class="ar dash" x1="20" y1="312" x2="50" y2="312" marker-end="url(#arr-f)"/>
+  <text class="ts" x="58" y="316">보드에 올릴 때의 경로. 문서 기준이고 직접 해 보지 않았다</text>
+</svg>

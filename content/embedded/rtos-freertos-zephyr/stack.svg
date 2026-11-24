@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="dg" width="760" height="470" viewBox="0 0 760 470">
+  <style>
+    .dg text { font-family: -apple-system, "Segoe UI", Arial, "Malgun Gothic", sans-serif; fill: var(--dg-text, #111); }
+    .dg .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+    .dg .t   { font-size: 12.5px; }
+    .dg .tb  { font-size: 13px; font-weight: 700; }
+    .dg .ts  { font-size: 11px; opacity: .8; }
+    .dg .box { fill: none; stroke: var(--dg-line, #555); stroke-width: 1; }
+    .dg .in  { fill: var(--dg-line, #555); fill-opacity: .10; stroke: var(--dg-line, #555); stroke-width: 1.4; }
+    .dg .out { fill: url(#hatch-s); stroke: var(--dg-line, #555); stroke-width: 1; stroke-dasharray: 4 3; }
+    .dg .hw  { fill: var(--dg-line, #555); fill-opacity: .28; stroke: var(--dg-line, #555); stroke-width: 1; }
+    .dg .br  { stroke: var(--dg-text, #111); stroke-width: 1; fill: none; }
+  </style>
+  <defs>
+    <pattern id="hatch-s" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="7" stroke="var(--dg-line, #555)" stroke-width="1" opacity=".45"/>
+    </pattern>
+  </defs>
+
+  <!-- (a) FreeRTOS : x 20..350 -->
+  <text class="tb" x="20" y="24">(a) FreeRTOS</text>
+
+  <rect class="box" x="20" y="40" width="330" height="44"/>
+  <text class="t" x="185" y="67" text-anchor="middle">응용 프로그램</text>
+
+  <rect class="out" x="20" y="92" width="330" height="62"/>
+  <text class="t" x="185" y="116" text-anchor="middle">드라이버 · 네트워크 · 파일시스템</text>
+  <text class="ts" x="185" y="136" text-anchor="middle">커널 저장소 밖. 칩 제조사 HAL 이나 별도 라이브러리</text>
+
+  <rect class="in" x="20" y="162" width="330" height="112"/>
+  <text class="t" x="185" y="184" text-anchor="middle">FreeRTOS 커널</text>
+  <text class="ts mono" x="185" y="206" text-anchor="middle">tasks.c  queue.c  list.c  timers.c</text>
+  <text class="ts mono" x="185" y="224" text-anchor="middle">event_groups.c  stream_buffer.c  croutine.c</text>
+  <text class="ts" x="185" y="250" text-anchor="middle">C 파일 7개, 17,023줄</text>
+
+  <rect class="in" x="20" y="282" width="210" height="62"/>
+  <text class="t" x="125" y="306" text-anchor="middle">포트 계층</text>
+  <text class="ts mono" x="125" y="326" text-anchor="middle">portable/&lt;컴파일러&gt;/&lt;CPU&gt;/port.c</text>
+
+  <rect class="in" x="238" y="282" width="112" height="62"/>
+  <text class="t" x="294" y="306" text-anchor="middle">힙</text>
+  <text class="ts mono" x="294" y="326" text-anchor="middle">heap_1 ~ heap_5</text>
+
+  <rect class="hw" x="20" y="352" width="330" height="40"/>
+  <text class="t" x="185" y="377" text-anchor="middle">하드웨어</text>
+
+  <!-- (b) Zephyr : x 410..740 -->
+  <text class="tb" x="410" y="24">(b) Zephyr</text>
+
+  <rect class="box" x="410" y="40" width="330" height="44"/>
+  <text class="t" x="575" y="67" text-anchor="middle">응용 프로그램</text>
+
+  <rect class="in" x="410" y="92" width="330" height="62"/>
+  <text class="t" x="575" y="116" text-anchor="middle">네트워크 · 저장소 · 장치 관리 · 전력 · 보안</text>
+  <text class="ts" x="575" y="136" text-anchor="middle">같은 저장소의 서브시스템</text>
+
+  <rect class="in" x="410" y="162" width="160" height="112"/>
+  <text class="t" x="490" y="184" text-anchor="middle">커널</text>
+  <text class="ts" x="490" y="206" text-anchor="middle">스레드 · 선점 스케줄링</text>
+  <text class="ts" x="490" y="224" text-anchor="middle">SMP · 메모리 보호</text>
+  <text class="ts" x="490" y="250" text-anchor="middle">C 파일 43개, 16,287줄</text>
+
+  <rect class="in" x="578" y="162" width="162" height="112"/>
+  <text class="t" x="659" y="184" text-anchor="middle">드라이버</text>
+  <text class="ts" x="659" y="206" text-anchor="middle">종류별 폴더 103개</text>
+  <text class="ts" x="659" y="232" text-anchor="middle">devicetree 바인딩</text>
+  <text class="ts" x="659" y="250" text-anchor="middle">4,589개</text>
+
+  <rect class="in" x="410" y="282" width="160" height="62"/>
+  <text class="t" x="490" y="306" text-anchor="middle">아키텍처</text>
+  <text class="ts" x="490" y="326" text-anchor="middle">arm, riscv, x86 등 13종</text>
+
+  <rect class="in" x="578" y="282" width="162" height="62"/>
+  <text class="t" x="659" y="306" text-anchor="middle">보드 정의</text>
+  <text class="ts" x="659" y="326" text-anchor="middle">1,173개</text>
+
+  <rect class="hw" x="410" y="352" width="330" height="40"/>
+  <text class="t" x="575" y="377" text-anchor="middle">하드웨어</text>
+
+  <!-- 범례 -->
+  <rect class="in" x="20" y="424" width="22" height="14"/>
+  <text class="ts" x="48" y="435">프로젝트 저장소에 들어 있는 것</text>
+  <rect class="out" x="250" y="424" width="22" height="14"/>
+  <text class="ts" x="278" y="435">저장소 밖에서 가져오는 것</text>
+  <rect class="box" x="460" y="424" width="22" height="14"/>
+  <text class="ts" x="488" y="435">직접 작성하는 것</text>
+  <text class="ts" x="20" y="458">줄 수와 개수는 2026년 11월에 내려받은 소스에서 센 값이다.</text>
+</svg>
