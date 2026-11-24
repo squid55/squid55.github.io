@@ -116,10 +116,24 @@ Zephyr 문서의 보드 목록에는 노르딕 세미컨덕터의 보드가 23�
 공식 경로로 삼고 있다. 노르딕 사이트는 예전 nRF5 SDK 가 유지보수 단계라고 밝히고, 새
 프로젝트에는 Zephyr 를 쓰는 nRF Connect SDK 를 권한다.
 
-![노르딕의 개발 키트](img/14-nordic-dk.jpg "노르딕 세미컨덕터의 개발 키트. 출처: Nordic Semiconductor")
+![nRF52 DK](img/14-nordic-dk.jpg "nRF52 DK. 출처: Nordic Semiconductor, nRF52 DK Product Brief 2.1")
 
-노르딕이 다른 보드와 다른 점은 LTE 다. nRF91 계열은 LTE-M 과 NB-IoT 를 지원하는
-SiP 다. Zephyr 문서에서 LTE 를 언급하는 노르딕 보드는 네 가지다.
+nRF52 DK 는 그중 하나다. 제품 소개서에 적힌 내용은 이렇다.
+
+| 항목 | 내용 |
+|---|---|
+| 용도 | Bluetooth LE, Bluetooth mesh, ANT, 2.4 GHz |
+| SoC | nRF52810, nRF52832 |
+| CPU | Arm Cortex-M4, 부동소수점 지원 |
+| 디버거 | SEGGER J-Link 가 보드에 내장 |
+| 보드 구성 | LED 4개, 버튼 4개, NFC 안테나, Arduino Uno Rev. 3 호환 커넥터 |
+| 전원 | USB, 외부 전원, CR2032 전지 |
+
+디버거가 보드에 붙어 있어서 USB 케이블 하나로 굽고 디버깅할 수 있다.
+
+노르딕이 다른 보드와 다른 점은 LTE 다. 다만 LTE 는 nRF52 가 아니라 nRF91 계열에 있다.
+nRF91 계열은 LTE-M 과 NB-IoT 를 지원하는 SiP 다. Zephyr 문서에서 LTE 를 언급하는 노르딕
+보드는 네 가지다.
 
 | 보드 | Zephyr 문서의 설명 |
 |---|---|
